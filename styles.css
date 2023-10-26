@@ -1,40 +1,47 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 }
-h1{
-    text-align: center;
-    margin: 2rem;
+h1 {
+  text-align: center;
+  margin: 2rem;
+  font-size: 3rem;
+  text-align: center;
+  text-decoration: dashed underline;
+  color: rgb(255, 177, 81);
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
-.searchBar{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
+.searchBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
 }
-input{
-    padding: 22px 10px ;
-    border-radius: 6px;
-    font-size: 16px;
-    background: #fbfbfb;
-    border: none;
-    height: 36px;
-    width: 100%;
-    max-width: 550px;
-    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
-    outline: none;
+input {
+  padding: 22px 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  background: #fbfbfb;
+  border: none;
+  height: 36px;
+  width: 100%;
+  max-width: 550px;
+  box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%),
+    0 1px 1.5px 0 rgb(0 0 0 / 5%);
+  outline: none;
 }
 button {
   background-color: #222;
@@ -44,7 +51,7 @@ button {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   margin-left: 1rem;
@@ -63,48 +70,94 @@ button {
 }
 
 button:hover {
-  opacity: .75;
+  opacity: 0.75;
 }
 
-.images{
-    width: 100vw;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    align-items: center;
-    padding: 2rem;
+.images {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  align-items: center;
+  padding: 2rem;
 }
-.fetchingImage{
-    height: 200px;
-    width: 100%;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+.fetchingImage {
+  height: 200px;
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
-.images div{
-    height: 280px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 15px;
-    border: 1px dashed black;
+.images div {
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px dashed rgb(255, 255, 255);
+  background-color: black;
 }
-.images a{
-    padding: 10px;
-    text-decoration: none;
-    font-size: 20px;
-    color: rgba(95, 95, 95, 0.932)
-
+.images a {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 1rem;
+  color: white;
+  font-weight: 600;
 }
-.loading{
-    display : none;
+dialog {
+  pointer-events: none;
+  position: fixed;
+  display: grid;
+  gap: 10px;
+  height: 100%;
+  max-height: none;
+  width: 100%;
+  max-width: none;
+  justify-items: center;
+  opacity: 0;
+  overscroll-behavior: contain;
+  z-index: 999;
+  background-color: transparent;
+  color: inherit;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-property: transform, opacity, visibility;
+  overflow-y: hidden;
+  place-items: center;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.4);
 }
-@media only screen and (max-width: 768px){
-    .images{
-        grid-template-columns: repeat(2, 1fr);
-    }
+dialog[open] {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
 }
-@media only screen and (max-width: 425px){
-    .images{
-        grid-template-columns: repeat(1, 1fr);
-    }
-
+dialog img {
+  width: 100%;
+  height: 550px;
+  max-width: 550px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.7);
+}
+#close {
+  background-color: red;
+  color: white;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5 rem;
+  display: none;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+@media only screen and (max-width: 768px) {
+  .images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 425px) {
+  .images {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
